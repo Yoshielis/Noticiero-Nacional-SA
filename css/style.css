@@ -84,36 +84,38 @@ nav ul li a:hover {
     color: #D4AF37;
 }
 
-/* ----- HEADER CON GRADIENTE ANIMADO ----- */
+/* Header con layout horizontal */
 header {
     background: linear-gradient(135deg, #0A0E17 0%, #1F2A3E 50%, #0A0E17 100%);
     background-size: 200% 200%;
     animation: gradientShift 8s ease infinite;
-    padding: 2rem 0 1rem 0;
-    text-align: center;
+    padding: 1rem 2rem;
     border-bottom: 2px solid rgba(212, 175, 55, 0.5);
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.logo-container {
+.header-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .logo-img {
-    width: 70px;
+    width: 60px;
+    height: auto;
     filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
 }
 
 .logo-text {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     background: linear-gradient(135deg, #FFFFFF, #D4AF37);
     -webkit-background-clip: text;
@@ -123,13 +125,26 @@ header {
 }
 
 .banner {
-    margin-top: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #D4AF37;
     text-transform: uppercase;
     letter-spacing: 3px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
 }
 
+/* Responsive: en móviles se apilan */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .logo-area {
+        justify-content: center;
+    }
+}
 /* ----- MAIN CONTENT (NEUMORFISMO) ----- */
 main {
     max-width: 1300px;
