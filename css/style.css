@@ -1,0 +1,356 @@
+/* ============================================
+   NOTICIAS SA NACIONAL - EDICIÓN ÉLITE
+   Temática: Elegancia, Virtud, Poder
+   Efectos: Neumorfismo, Gradiente Animado, Filtros, Sticky Nav
+   ============================================ */
+
+/* ----- RESET Y FUENTES DE LUJO ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', 'Times New Roman', serif; /* Fuente elegante (revista) */
+    background-color: #0A0E17;
+    color: #F3F4F6;
+    line-height: 1.5;
+}
+
+/* Importar fuentes Google (Elegancia) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+h1, h2, h3, .titulo-lujo {
+    font-family: 'Inter', sans-serif; /* Contraste moderno para títulos */
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+p {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    color: #D1D5DB;
+}
+
+/* ----- STICKY NAVBAR (EFECTO VIDRIO) ----- */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(12px); /* Efecto vidrio */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1.2rem 0;
+    gap: 3rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #F3F4F6;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37);
+    transition: width 0.4s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #D4AF37;
+}
+
+/* ----- HEADER CON GRADIENTE ANIMADO ----- */
+header {
+    background: linear-gradient(135deg, #0A0E17 0%, #1F2A3E 50%, #0A0E17 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.5);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    width: 70px;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+}
+
+.logo-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFFFFF, #D4AF37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+}
+
+.banner {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #D4AF37;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* ----- MAIN CONTENT (NEUMORFISMO) ----- */
+main {
+    max-width: 1300px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+/* Tarjetas con Neumorfismo */
+.neumorphic-card {
+    background: #111827;
+    border-radius: 24px;
+    box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.5), -8px -8px 16px rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.neumorphic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.6), -10px -10px 20px rgba(212, 175, 55, 0.1);
+    border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* IMAGE FILTER SELECT (Gris a Color + Brillo) */
+.img-filter {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    filter: grayscale(80%) brightness(0.9);
+    transition: all 0.5s ease;
+}
+
+.neumorphic-card:hover .img-filter {
+    filter: grayscale(0%) brightness(1.1);
+    transform: scale(1.02);
+}
+
+/* Contenido de tarjetas */
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #D4AF37;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Grids responsivos */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Videos */
+.video-wrapper iframe {
+    width: 100%;
+    height: 220px;
+    border-radius: 20px;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.video-wrapper:hover iframe {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Footer Neumórfico */
+footer {
+    background: #0D1220;
+    margin-top: 4rem;
+    padding: 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.footer-links ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.footer-links ul li a {
+    color: #9CA3AF;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #D4AF37;
+}
+
+/* Contactanos (Grid de lujo) */
+.integrante {
+    background: #111827;
+    border-radius: 30px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.4);
+}
+
+.integrante img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #D4AF37;
+    filter: grayscale(30%);
+    transition: 0.4s;
+}
+
+.integrante:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Botones dorados */
+.btn-oro {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 0.5rem 1.2rem;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-oro:hover {
+    background: #D4AF37;
+    color: #0A0E17;
+}
+
+/* ============================================
+   ESTILOS ESPECIALES PARA PÁGINA DE CONTACTOS
+   Grid: 3 arriba, 1 abajo centrado
+   ============================================ */
+
+/* Contenedor especial para los integrantes */
+.integrantes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas arriba */
+    gap: 2rem;
+    justify-items: center;
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Estilo para cada integrante */
+.integrante {
+    background: #111827;
+    border-radius: 30px;
+    padding: 1.5rem;
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
+}
+
+.integrante:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 15px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* El cuarto integrante (último hijo) se centra */
+.integrante:last-child {
+    grid-column: 2 / 3; /* Lo posiciona en la columna del medio */
+    justify-self: center;
+}
+
+/* Fotos de los integrantes */
+.integrante img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #D4AF37;
+    filter: grayscale(30%);
+    transition: 0.4s;
+}
+
+.integrante:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+    border-color: #FFD700;
+}
+
+.integrante h3 {
+    margin: 1rem 0 0.5rem;
+    color: #D4AF37;
+    font-size: 1.3rem;
+}
+
+.integrante p {
+    font-size: 0.9rem;
+    color: #9CA3AF;
+}
+
+/* Responsive: En móvil se apilan */
+@media (max-width: 768px) {
+    .integrantes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .integrante:last-child {
+        grid-column: auto;
+    }
+}
