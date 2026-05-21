@@ -20,21 +20,117 @@
 <main>
     <h1>Jugadas que Definen Leyendas</h1>
     <div class="grid-3">
+        <div class="grid-3">
+    <div class="neumorphic-card video-wrapper">
+        <video class="custom-video" preload="metadata" poster="/media/futbol-poster.jpg">
+            <source src="/media/deporteFutbol.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+        <div class="card-content">
+            <h2>⚽ Gol de Antología</h2>
+            <p>Chilena espectacular en la final. El mejor gol del año.</p>
+            <button class="play-btn">▶ Reproducir</button>
+        </div>
+    </div>
+</div>
         <div class="neumorphic-card video-wrapper">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-            <div class="card-content"><h2>⚽ Gol de Antología</h2><p>Chilena espectacular en la final. El mejor gol del año.</p></div>
+            <video class="custom-video" preload="metadata" poster="/media/basquet-poster.jpg">
+                <source src="/media/deporteBasquet.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+            <div class="card-content">
+                <h2>🏀 Mate Asesino</h2>
+                <p>Últimos segundos, remontada histórica en la NBA.</p>
+                <button class="play-btn">▶ Reproducir</button>
+            </div>
         </div>
         <div class="neumorphic-card video-wrapper">
-            <iframe src="https://www.youtube.com/embed/3t6bLugLJlI" allowfullscreen></iframe>
-            <div class="card-content"><h2>🏀 Mate Asesino</h2><p>Últimos segundos, remontada histórica en la NBA.</p></div>
-        </div>
-        <div class="neumorphic-card video-wrapper">
-            <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" allowfullscreen></iframe>
-            <div class="card-content"><h2>🎾 Punto Infinito</h2><p>30 intercambios que dejaron sin aliento al público.</p></div>
+            <video class="custom-video" preload="metadata" poster="/media/tennis-poster.jpg">
+                <source src="/media/deporteTennis.mp4" type="video/mp4">
+                Tu navegador no soporta videos.
+            </video>
+            <div class="card-content">
+                <h2>🎾 Punto Infinito</h2>
+                <p>30 intercambios que dejaron sin aliento al público.</p>
+                <button class="play-btn">▶ Reproducir</button>
+            </div>
         </div>
     </div>
 </main>
 
 <footer><div class="footer-links"><ul><li><a href="/HOME.html">Inicio</a></li><li><a href="/pages/deportivas.html">Deportivas</a></li><li><a href="/pages/internacionales.html">Internacionales</a></li><li><a href="/pages/contactanos.html">Contáctanos</a></li></ul></div></footer>
+<script>
+    // Control de videos: solo se reproducen con click o hover prolongado
+    document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('.custom-video');
+        let hoverTimeout;
+        
+        videos.forEach(video => {
+            // Opción 1: Click para reproducir/pausar
+            video.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (this.paused) {
+                    // Pausar todos los demás videos primero
+                    videos.forEach(v => {
+                        if (v !== this && !v.paused) {
+                            v.pause();
+                        }
+                    });
+                    this.play();
+                } else {
+                    this.pause();
+                }
+            });
+            
+            // Opción 2: Mouse sobre el video por 1 segundo reproduce
+            video.addEventListener('mouseenter', function() {
+                hoverTimeout = setTimeout(() => {
+                    if (this.paused) {
+                        // Pausar otros videos
+                        videos.forEach(v => {
+                            if (v !== this && !v.paused) {
+                                v.pause();
+                            }
+                        });
+                        this.play();
+                    }
+                }, 1000); // 1000ms = 1 segundo
+            });
+            
+            // Si el mouse sale, cancelar la reproducción automática
+            video.addEventListener('mouseleave', function() {
+                clearTimeout(hoverTimeout);
+                // Opcional: pausar si se va el mouse
+                // if (!this.paused) {
+                //     this.pause();
+                // }
+            });
+            
+            // También funcionan los botones
+            const btn = video.parentElement.querySelector('.play-btn');
+            if (btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const video = this.parentElement.parentElement.querySelector('.custom-video');
+                    if (video.paused) {
+                        video.play();
+                        this.textContent = '⏸ Pausar';
+                    } else {
+                        video.pause();
+                        this.textContent = '▶ Reproducir';
+                    }
+                });
+                
+                video.addEventListener('play', () => {
+                    if (btn) btn.textContent = '⏸ Pausar';
+                });
+                
+                video.addEventListener('pause', () => {
+                    if (btn) btn.textContent = '▶ Reproducir';
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>

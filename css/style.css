@@ -167,6 +167,34 @@ main {
     transform: scale(1.02);
 }
 
+/* Estilos para los videos personalizados */
+.custom-video {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #000;
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #D4AF37, #FFD700);
+    border: none;
+    color: #0A0E17;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
 /* Contenido de tarjetas */
 .card-content {
     padding: 1.5rem;
